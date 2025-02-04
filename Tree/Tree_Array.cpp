@@ -1,11 +1,11 @@
  
 #include <iostream>
+#include <cmath>
 using namespace std;
-
-int i = 0; 
 
 const int SIZE = 6;
 int arr[SIZE] = {0,0,0,0,0,0};
+int i = 0; 
 
 bool isFull() {
     return (i == SIZE); 
@@ -32,8 +32,15 @@ void removeLast() {
     if (i == 0) {
         cout << "Tree is empty!" << endl;
     } else {
+        arr[i-1] = 0;
         i--;
         cout << "Last value removed." << endl;
+    }
+}
+
+void printSpace(int count) {
+    for (int k = 0; k < count; k++) {
+        cout << " ";
     }
 }
 
@@ -41,11 +48,24 @@ void seeTree() {
     if (i == 0) {
         cout << "Tree is empty!" << endl;
     } else {
-        cout << "Current Tree: ";
-        for (int j = 0; j < i; j++) {
-            cout << arr[j] << " ";
+        int h = ceil(log2(i+1)) - 1;  
+        int level = 0;  
+        int nodesInLevel = pow(2, level);  
+        int index = 0;  
+
+        while (index < i) {
+            int spaceCount = pow(2, h-level+1) - 1;
+            printSpace(spaceCount);
+
+            for (int j = 0; j < nodesInLevel && index < i; j++) {
+                cout << arr[index] << " ";
+                printSpace(spaceCount);
+                index++;
+            }
+            cout << endl;
+            level++;
+            nodesInLevel = pow(2, level);
         }
-        cout << endl;
     }
 }
 
