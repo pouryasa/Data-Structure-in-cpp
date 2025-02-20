@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+ 
+//create table
+vector<int> table;
+
+//create hash funcy
+
+int main() {
+
+	//create hash funcy
+	//get key
+	//put to table
+	//solve colision 
+	//link to table
+
+return 0;}
